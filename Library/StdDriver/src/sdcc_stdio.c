@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                                                                         */
 /* SPDX-License-Identifier: Apache-2.0                                                                     */
-/* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                         */
+/* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                         */
 /*                                                                                                         */
 /*---------------------------------------------------------------------------------------------------------*/
 
