@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------*/
+/*                                                                                                         */
+/* SPDX-License-Identifier: Apache-2.0                                                                     */
+/* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                         */
+/*                                                                                                         */
+/*---------------------------------------------------------------------------------------------------------*/
 #define  GPIO_LED                P05               /* NuMaker LED define */
 #define  GPIO_LED_QUASI_MODE     P05_QUASI_MODE
 #define  GPIO_PRINTF             P06

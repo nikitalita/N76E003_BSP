@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------*/
+/*                                                                                                         */
+/* SPDX-License-Identifier: Apache-2.0                                                                     */
+/* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                         */
+/*                                                                                                         */
+/*---------------------------------------------------------------------------------------------------------*/
 #if defined __C51__
 extern uint8_t xdata DIDBuffer[2];
 extern uint8_t xdata PIDBuffer[2];

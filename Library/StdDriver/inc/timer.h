@@ -1,3 +1,10 @@
+/*---------------------------------------------------------------------------------------------------------*/
+/*                                                                                                         */
+/* SPDX-License-Identifier: Apache-2.0                                                                     */
+/* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                         */
+/*                                                                                                         */
+/*---------------------------------------------------------------------------------------------------------*/
+
 #if defined __C51__
 extern uint32_t data TIMER0CT,TIMER1CT,TIMER2CT,TIMER3CT;
 extern uint8_t data TH0TMP,TL0TMP,TH1TMP,TL1TMP;
