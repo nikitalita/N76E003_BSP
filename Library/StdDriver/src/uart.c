@@ -79,6 +79,8 @@ void SerialPort1_ISR(void) __interrupt (15)
 #endif
 
 
+#define DIV_ROUND_CLOSEST(n, d) ((((n) < 0) == ((d) < 0)) ? (((n) + (d) / 2) / (d)) : (((n) - (d) / 2) / (d)))
+
   /**
   * @brief This API configures UART0 
   * @param[in] u32SysClock . Valid values as Fsys clock:
@@ -91,7 +93,7 @@ void SerialPort1_ISR(void) __interrupt (15)
   *                       - \ref 115200
   *                       - \ref 200000
   * @note      None.
-  * @exmaple : UART_Open(16600000,UART0_Timer1,115200);
+  * @example : UART_Open(16600000,UART0_Timer1,115200);
   */
 void UART_Open(uint32_t u32SysClock, uint8_t u8UARTPort,uint32_t u32Baudrate)
 {
@@ -103,7 +105,7 @@ void UART_Open(uint32_t u32SysClock, uint8_t u8UARTPort,uint32_t u32Baudrate)
           set_PCON_SMOD;          //UART0 Double Rate Enable
           set_CKCON_T1M;
           clr_T3CON_BRCK;          //Serial port 0 baud rate clock source = Timer1
-          TH1 = 256 - (u32SysClock/16/u32Baudrate);
+          TH1 = 256 - DIV_ROUND_CLOSEST(u32SysClock/16,u32Baudrate);
           set_TCON_TR1;
       break;
       
@@ -112,16 +114,16 @@ void UART_Open(uint32_t u32SysClock, uint8_t u8UARTPort,uint32_t u32Baudrate)
           set_PCON_SMOD;        //UART0 Double Rate Enable
           T3CON &= 0xF8;   //T3PS2=0,T3PS1=0,T3PS0=0(Prescale=1)
           set_T3CON_BRCK;        //UART0 baud rate clock source = Timer3
-          RH3    = HIBYTE(65536 - (u32SysClock/16/u32Baudrate));  
-          RL3    = LOBYTE(65536 - (u32SysClock/16/u32Baudrate));  
+          RH3    = HIBYTE(65536 - DIV_ROUND_CLOSEST(u32SysClock/16,u32Baudrate));  
+          RL3    = LOBYTE(65536 - DIV_ROUND_CLOSEST(u32SysClock/16,u32Baudrate));  
           set_T3CON_TR3;         //Trigger Timer3
       break;
       
       case UART1_Timer3:
           SCON_1 = 0x50;     //UART1 Mode1,REN_1=1,TI_1=1
           T3CON = 0x80;     //T3PS2=0,T3PS1=0,T3PS0=0(Prescale=1), UART1 in MODE 1
-          RH3    = HIBYTE(65536 - (u32SysClock/16/u32Baudrate));  
-          RL3    = LOBYTE(65536 - (u32SysClock/16/u32Baudrate));     
+          RH3    = HIBYTE(65536 - DIV_ROUND_CLOSEST(u32SysClock/16,u32Baudrate));  
+          RL3    = LOBYTE(65536 - DIV_ROUND_CLOSEST(u32SysClock/16,u32Baudrate));     
           set_T3CON_TR3;             //Trigger Timer3
       break; 
   }
