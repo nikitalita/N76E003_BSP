@@ -173,7 +173,8 @@ void ClockSwitch(uint8_t u8FsysMode)
     break;
     /***** ECLK P30 Disable part ******/
     case FSYS_OSCIN_P30:
-        set_CKSWT_ECLKST;
+        clr_CKSWT_OSC1;
+        set_CKSWT_OSC0;
     break;
   }
   EA = BIT_TMP;
