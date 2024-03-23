@@ -843,4 +843,9 @@ typedef __bit                 BIT;
 #define    WDT_COUNTER_CLEAR                  set_WDCON_WDCLR
 #define    WDT_COUNTER_RUN                    set_WDCON_WDTR
 
+/*****************************************************************************/
+/*     Power-on-Reset setting                                                */
+/*****************************************************************************/
 
+/** Per N76E003 errata sheet rev. 1.02, section 2.1, it is recommended that POR be disabled before entering power-down mode. */
+#define DISABLE_POWER_ON_RESET              BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;SFRS=0;TA=0xAA;TA=0x55;PORDIS=0x5A;TA=0xAA;TA=0x55;PORDIS=0xA5;EA=BIT_TMP
